@@ -1,4 +1,7 @@
-package maquina_snack;
+package maquina_snacks_archivos.presentacion;
+
+import maquina_snacks_archivos.dominio.Snack;
+import maquina_snacks_archivos.servicio.ServicioSnackLista;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +18,7 @@ public class MaquinaSnacks {
         // Creamos la lista de productos de tipo snack
         List<Snack> productos = new ArrayList<>();
         System.out.println("*** Maquina de Snacks ***");
-        Snacks.mostrarSnacks(); // Mostrar inventario de snacks disponibles
+        ServicioSnackLista.mostrarSnacks(); // Mostrar inventario de snacks disponibles
         while(!salir){
             try{
                 var opcion = mostrarMenu(consola);
@@ -63,7 +66,7 @@ public class MaquinaSnacks {
         var idSnack = Integer.parseInt(consola.nextLine());
         //Validar que el snack exista en la lista de snacks
         var snackEncontrado = false;
-        for(var snack: Snacks.getSnacks()){
+        for(var snack: ServicioSnackLista.getSnacks()){
             if(idSnack == snack.getIdSnack()){
                 //Agregamos el snack a la lista de productos
                 productos.add(snack);
@@ -93,10 +96,8 @@ public class MaquinaSnacks {
         var nombre = consola.nextLine();
         System.out.print("Precio del snack: ");
         var precio = Double.parseDouble(consola.nextLine());
-        Snacks.agregarSnack(new Snack(nombre, precio));
+        ServicioSnackLista.agregarSnack(new Snack(nombre, precio));
         System.out.println("Tu snack se ha agregado correctamente");
-        Snacks.mostrarSnacks();
+        ServicioSnackLista.mostrarSnacks();
     }
-
-    // VAMOS A COMENTAR PARA HACER UN COMIT
 }
